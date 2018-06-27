@@ -30,18 +30,15 @@ $(document).ready(function()
 	
 	var usercode = $("#usercode")
 	$(usercode)[0].value = 
-		'var in1 = ViewportManager.create("in01")//создание холста in1' + '\n' + 
-		'var in2 = ViewportManager.create("in02")//создание холста in2' + '\n' + 
-		'in1.bindImage(image[0])//привязка картинки к холсту in1' + '\n' + 
-		'var iCS = in1.getCanvasSize()//получение размера холста in1' + '\n' + 
-		'in2.setCanvasSize(iCS[0], iCS[1])//задание размера холста in2' + '\n' + 
-		'in2.clear()//очистка холста in2' + '\n' + 
-		'for (var j = 0; j < iCS[1]; j++)//пробегаем по строкам холста' + '\n' + 
-		' for (var i = 0; i < iCS[0]; i++){//пробегаем по столбцам холста' + '\n' + 
-		'  var pixel = in1.getPixel(i, j)//получаем пиксель холста 1' + '\n' + 
-		'  in2.setPixel(i, j, pixel)//записываем пиксель в холст 2' + '\n' + 
-		'}' + '\n' + 
-		'in2.putImageData()//обновляем холст 2'
+		'var in1 = ViewportManager.create("in01")//создание холста'+'\n'+
+		'in1.setCanvasSize(255, 255)//задаём размер холста'+'\n'+
+		'in1.clear([0, 0, 0, 255])//очистка холста чёрным цветом'+'\n'+
+		'for (var j = 0; j < 255; j++)//пробегаем по строкам холста'+'\n'+
+		'for (var i = 0; i < 255; i++){//пробегаем по столбцам холста'+'\n'+
+		'in1.setPixel(i, j, [i%255, j%255, 0, 255])//записываем пиксель на холст'+'\n'+
+		'}'+'\n'+
+		'in1.putImageData() //обновляем холст'
+
 
 	$("#exec").click(function()
 		{

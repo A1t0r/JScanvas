@@ -1,0 +1,28 @@
+.halfscreen {
+	width: 49.5%;
+	vertical-align: top;
+}
+
+.color_element {
+	display: inline-block;
+	margin: 10px;
+	text-align: center;
+}
+
+.color_caption {
+	margin: 1px;
+}
+
+#usercode, #usercon {
+	width: 49%;
+}
+
+p {
+	width : 4em;
+	height : 1.5em;
+}
+
+canvas {
+	border-width: 2px;
+	border-style: solid;
+}

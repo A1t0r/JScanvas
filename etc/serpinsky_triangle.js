@@ -1,6 +1,7 @@
-function serpinsky(view, num, p1, p2, p3)
+console.log("Функция serpinsky_triangle подключена.")
+function serpinsky_triangle(view, iter, p1, p2, p3)
 {
- if (num < 0)
+ if (iter < 0)
   return;
  view.beginPath()
  view.moveTo(p1[0], p1[1])
@@ -11,8 +12,8 @@ function serpinsky(view, num, p1, p2, p3)
  var dp1 = [(p1[0]+p2[0])/2, (p1[1]+p2[1])/2]
  var dp2 = [(p2[0]+p3[0])/2, (p2[1]+p3[1])/2]
  var dp3 = [(p3[0]+p1[0])/2, (p3[1]+p1[1])/2]
- iter(view, num-1, p1, dp1, dp3)
- iter(view, num-1, dp1, p2, dp2)
- iter(view, num-1, p3, dp3, dp2)
+ serpinsky_triangle(view, iter-1, p1, dp1, dp3)
+ serpinsky_triangle(view, iter-1, dp1, p2, dp2)
+ serpinsky_triangle(view, iter-1, p3, dp3, dp2)
 }
 

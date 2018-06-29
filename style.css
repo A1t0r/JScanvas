@@ -28,5 +28,7 @@ canvas {
 }
 
 #page {
-	overflow : auto;
+	overflow : scroll;
+	width : 100%;
+	height : 100%;
 }

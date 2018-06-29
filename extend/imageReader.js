@@ -2,7 +2,7 @@ console.log("Расширение imageReader загружено.")
 
 var image = []
 
-$('body').children().first().before('<input type="file" id="in_file" accept=".jpg, .jpeg, .bmp, .png, .gif" multiple="multiple" style="display:block"></input>')
+$('#page').children().first().before('<input type="file" id="in_file" accept=".jpg, .jpeg, .bmp, .png, .gif" multiple="multiple" style="display:block"></input>')
 
 
 

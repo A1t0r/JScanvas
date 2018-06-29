@@ -1,6 +1,6 @@
 console.log("Расширение viewport загружено.")
 
-$('body').children().first().before('<div id="view_container"></div>')
+$('#page').children().first().before('<div id="view_container"></div>')
 
 $("#view_container").before('<input type="button" name="switch_view" id="switch_view" value="Switch view"></input>')
 

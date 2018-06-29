@@ -29,6 +29,6 @@ canvas {
 
 #page {
 	overflow : scroll;
-	width : 100%;
-	height : 100%;
+	width : 990px;
+	height : 745px;
 }

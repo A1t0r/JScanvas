@@ -26,9 +26,3 @@ canvas {
 	border-width: 2px;
 	border-style: solid;
 }
-
-#page {
-	overflow : scroll;
-	width : 990px;
-	height : 745px;
-}

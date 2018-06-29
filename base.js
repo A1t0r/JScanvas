@@ -26,6 +26,7 @@ $(document).ready(function()
 		}
 	$(usercon)[0].value = ""
 	
+	include("extend/imageReader")
 	include("extend/viewport")
 	
 	var usercode = $("#usercode")

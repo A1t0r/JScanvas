@@ -4,17 +4,16 @@
 		<title>JScanvas</title>
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="style.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" charset="UTF-8"></script>
+		<script src="libs/jquery-3.2.1.min.js" charset="UTF-8"></script>
 		<script type="text/javascript" src="base.js"></script>
 	</head>
 	<body>
-		<div id="page" style="overflow : scroll; width : 990px;	height : 745px;">
-			<div style="display:inline" >
-				<input type="button" id="exec" value="Execute" style="display:block" />
-				<textarea id="usercode" name="usercode" cols="80" rows="15" style="display:inline"></textarea>
-				<textarea id="usercon" name="usercon" cols="80" rows="15"></textarea>
-				
+		<div id="page">
+			<div id="button_bar">
+				<input type="button" id="exec" value="Execute" />
 			</div>
+			<textarea id="usercode" name="usercode" spellcheck="false" ></textarea>
+			<textarea id="usercon" name="usercon" spellcheck="false"></textarea>
 			<div id="script_container"></div>
 		</div>
 	</body>

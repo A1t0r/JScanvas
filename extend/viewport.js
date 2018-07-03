@@ -1,8 +1,8 @@
-console.log("Расширение viewport загружено.")
+log("Расширение viewport загружено.")
 
 $('#page').children().first().before('<div id="view_container"></div>')
 
-$("#view_container").before('<input type="button" name="switch_view" id="switch_view" value="Switch view"></input>')
+$("#button_bar").children().last().after('<input type="button" name="switch_view" id="switch_view" value="Switch view"></input>')
 
 $("#switch_view").click(function()
 	{
@@ -27,7 +27,7 @@ var ViewportManager = new function()
 					_countViewport++
 					return view
 				}
-				console.log("Создание провалено!")
+				log("Создание провалено!")
 				return
 			}
 		}
@@ -72,11 +72,16 @@ var Viewport = function(name)
 			return _name
 		}
 		
-		
 		this.createCanvas = function(name)
 		{
 			$("#view_container").append(
 				'<canvas id="' + name + '" width="300" height="300" style="display:inline"></canvas>')
+			$('canvas#' + name).click(function(){ 
+				$("#page").append('<a href="' + $(this)[0].toDataURL() + '" id="link"></a>');
+				$("#link").attr("download", name)
+				$("#link")[0].click()
+				$("#link").remove()
+			})
 			return $('canvas#' + name)[0]
 		}
 		

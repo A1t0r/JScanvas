@@ -1,28 +1,55 @@
+body {
+	background : linear-gradient(45deg, #110033, #113366);
+}
 .halfscreen {
 	width: 49.5%;
 	vertical-align: top;
 }
 
-.color_element {
-	display: inline-block;
-	margin: 10px;
-	text-align: center;
+#usercode {
+	height : 15%;
+	bottom : 1%;
+	width : 70%;
+	left : 1%;
 }
 
-.color_caption {
-	margin: 1px;
+#usercon {
+	height : 15%;
+	bottom : 1%;
+	width : 25%;
+	left : 73%;
 }
 
-#usercode, #usercon {
-	width: 49%;
-}
-
-p {
-	width : 4em;
-	height : 1.5em;
+textarea {
+	font-family : 'Lucida console';
+	position : fixed;
+	resize : none;
+	font-size : 100%;
+	background-color : #44664455;
+	color : #22FFFF;
+	border-style : solid;
+	border-color : #1144EE;
+	border-width : 7px 2px 2px 2px;
 }
 
 canvas {
 	border-width: 2px;
 	border-style: solid;
+}
+
+#button_bar {
+	position : fixed;
+	bottom : 19%;
+	left : 1%;
+}
+
+input {
+	background-color : #00000000;
+	border-width : 5px;
+	border-style : solid;
+	border-color : #22FFFF;
+	font : bold 100% Lucida console;
+	border-radius : 40% 0% 40% 0%;
+	color : #22FFFF;
+	margin : 1px;
 }

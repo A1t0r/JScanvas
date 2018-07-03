@@ -1,10 +1,8 @@
-console.log("Расширение imageReader загружено.")
+log("Расширение imageReader загружено.")
 
 var image = []
 
-$('#page').children().first().before('<input type="file" id="in_file" accept=".jpg, .jpeg, .bmp, .png, .gif" multiple="multiple" style="display:block"></input>')
-
-
+$('#button_bar').children().last().after('<input type="file" id="in_file" accept=".jpg, .jpeg, .bmp, .png, .gif" multiple="multiple" ></input>')
 
 var ImageReader = function(file)
 {
@@ -15,7 +13,7 @@ var ImageReader = function(file)
 			var picture = new Image()
 			picture.src = e.target.result
 			ctx.picture = picture
-			console.log("Файл с изображением " + file.name + " загружен.")
+			log("Файл с изображением " + file.name + " загружен.")
 		}
 	}
 	this.fileReader.onloadend = onloadend(this)

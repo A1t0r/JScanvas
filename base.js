@@ -19,7 +19,7 @@ $(document).ready(function()
 {
 	var usercon = $("#usercon")
 	var superconsole = console.log
-	console.log = function(t)
+	log = function(t)
 		{	
 			$(usercon)[0].value = $(usercon)[0].value + t + "\n"
 			superconsole(t)
@@ -31,15 +31,15 @@ $(document).ready(function()
 	
 	var usercode = $("#usercode")
 	$(usercode)[0].value = 
-		'var in1 = ViewportManager.create("in01")//создание холста'+'\n'+
+		'var vm = ViewportManager//делаем псевдоним для краткости'+'\n'+
+		'var in1 = vm.create("in01")//создание холста'+'\n'+
 		'in1.setCanvasSize(255, 255)//задаём размер холста'+'\n'+
 		'in1.clear([0, 0, 0, 255])//очистка холста чёрным цветом'+'\n'+
 		'for (var j = 0; j < 255; j++)//пробегаем по строкам холста'+'\n'+
-		'for (var i = 0; i < 255; i++){//пробегаем по столбцам холста'+'\n'+
-		'in1.setPixel(i, j, [i%255, j%255, 0, 255])//записываем пиксель на холст'+'\n'+
-		'}'+'\n'+
+		'	for (var i = 0; i < 255; i++){//пробегаем по столбцам холста'+'\n'+
+		'		in1.setPixel(i, j, [i%255, j%255, 0, 255])//записываем пиксель на холст'+'\n'+
+		'	}'+'\n'+
 		'in1.putImageData() //обновляем холст'
-
 
 	$("#exec").click(function()
 		{

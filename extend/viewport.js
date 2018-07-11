@@ -159,8 +159,8 @@ var Viewport = function(name)
 		this.clear = function(color)
 		{
 			this.fillRect(color ? 
-				[color[0], color[1], color[2], color[3]] : 
-				[255, 255, 255, 255], 
+				color :
+				"#FFFFFFFF",
 				0, 
 				0, 
 				_canvas.width, 
@@ -169,9 +169,28 @@ var Viewport = function(name)
 		}
 		
 		
-		this.fillRect = function(color, x, y, width, height)
+		this.fillRect = function(style, x, y, width, height)
 		{
-			_ctx.fillStyle = 'rgba(' + color + ')'
+			if (style instanceof Array){
+				if (style.length === 4)
+					_ctx.fillStyle = 'rgba(' + style + ')'
+				else{
+					var grad
+					if (style.length === 7){
+						grad = _ctx.createRadialGradient(style[0],style[1],style[2],style[3],style[4],style[5]);
+						for (var i in style[6]) 
+							grad.addColorStop(i, style[6][i])
+					}
+					else if (style.length === 5){
+						grad = _ctx.createLinearGradient(style[0],style[1],style[2],style[3]);
+						for (var i in style[4]) 
+							grad.addColorStop(i, style[4][i])
+					}
+					_ctx.fillStyle = grad
+				}
+			}
+			else
+				_ctx.fillStyle = style
 			_ctx.fillRect(x, y, width, height)
 		}
 		
@@ -207,7 +226,7 @@ var Viewport = function(name)
 		this.closePath = function()
 		{
 			_ctx.closePath()
-			this.refreshImageData(0, 0, _canvas.width, _canvas.height)
+			
 		}
 		
 		
@@ -223,23 +242,49 @@ var Viewport = function(name)
 		}
 		
 		
-		this.line = function(xa, ya, xb, yb, col)
+		this.line = function(xa, ya, xb, yb)
 		{
-			_ctx.strokeStyle = col || 'black'
+			this.beginPath()
 			_ctx.moveTo(xa, ya)
 			_ctx.lineTo(xb, yb)
+			this.stroke()
+			this.closePath()
+		}
+		
+		this.arc = function(x, y, r, startAngle, endAngle, ccw)
+		{
+			this.beginPath()
+			_ctx.arc(x, y, r, startAngle / 180 * Math.PI, endAngle / 180 * Math.PI, ccw || false)
+			this.stroke()
+			this.closePath()
 		}
 		
 		
 		this.setStrokeStyle = function(style)
 		{
-			_ctx.strokeStyle = style
+			if (style instanceof Array){
+				var grad
+				if (style.length === 7){
+					grad = _ctx.createRadialGradient(style[0],style[1],style[2],style[3],style[4],style[5]);
+					for (var i in style[6]) 
+						grad.addColorStop(i, style[6][i])
+				}
+				else if (style.length === 5){
+					grad = _ctx.createLinearGradient(style[0],style[1],style[2],style[3]);
+					for (var i in style[4]) 
+						grad.addColorStop(i, style[4][i])
+				}
+				_ctx.strokeStyle = grad
+			}
+			else
+				_ctx.strokeStyle = style
 		}
 		
 		
 		this.stroke = function()
 		{
 			_ctx.stroke()
+			this.refreshImageData(0, 0, _canvas.width, _canvas.height)
 		}
 		
 		this.setLineWidth = function(width)
